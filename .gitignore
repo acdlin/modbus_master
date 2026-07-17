@@ -1,0 +1,29 @@
+# Build
+build/
+cmake-build-*/
+compile_commands.json
+
+# IDE
+.vscode/
+.idea/
+*.user
+*.pro.user
+
+# Compiled
+*.o
+*.moc
+*.obj
+moc_*
+ui_*
+qrc_*
+
+# Binary
+modbus_master
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python cache
+__pycache__/
+*.pyc
