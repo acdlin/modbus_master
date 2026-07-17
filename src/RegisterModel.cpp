@@ -87,9 +87,12 @@ bool RegisterModel::setData(const QModelIndex &index, const QVariant &value, int
         return false;
 
     if (index.column() == 2) {  // 只有"当前值"列可编辑
-        m_registers[index.row()].value = value.toUInt();
+        bool ok;
+        int val = value.toInt(&ok);
+        if (!ok || val < 0 || val > 65535) return false;
+        m_registers[index.row()].value = static_cast<quint16>(val);
         emit dataChanged(index, index, {role});  // 通知 View 刷新
-        emit registerChanged(index.row() ,value.toUInt());
+        emit registerChanged(index.row(), static_cast<quint16>(val));
         return true;
     }
     return false;
